@@ -7,7 +7,7 @@ import remark from "remark";
 import markdownParse from "remark-parse";
 import { getOutput, ogAWSPlugin } from "./parseOgAWS";
 
-export class OgAWSSeed extends DendronSeed {
+export default class OgAWSSeed extends DendronSeed {
   config() {
     return {
       src: {
@@ -18,16 +18,16 @@ export class OgAWSSeed extends DendronSeed {
   }
 
   async prepare(opts: PrepareOpts) {
-    console.log(opts);
+    const ctx = "prepare";
+    this.L.info({ctx, opts});
     const { root } = opts;
-    const fpath = path.join(root, "og-aws", "README.md");
+    const fpath = path.join(root, "README.md");
     const dataPath = fs.readFileSync(fpath, { encoding: "utf8" });
     remark()
       .use(markdownParse, { gfm: true })
       .use(ogAWSPlugin)
       .processSync(dataPath);
     const output = getOutput();
-    fs.writeJSONSync("/tmp/out.json", output, { spaces: 4 });
     const dataSplit = dataPath.split("\n");
     // skip last one, high availability
     const notes = output.slice(0, -1).map((ent, index) => {
@@ -37,7 +37,7 @@ export class OgAWSSeed extends DendronSeed {
       let end = output[index + 1]?.payload.position?.start.line || -1;
       end -= 1;
       const content = [`# ${name}`].concat(dataSplit.slice(start, end));
-      const cleanName = cleanFileName(name.toLowerCase()).replace(",", "");
+      const cleanName = cleanFileName(name.toLowerCase()).replace(/,/g, "");
       const fname = `s.${cleanName}`;
       return new Note({
         id: cleanName,
@@ -45,9 +45,14 @@ export class OgAWSSeed extends DendronSeed {
         updated: "0",
         fname,
         body: content.join("\n"),
+        custom: {
+          source: {
+            name: "og-aws",
+            url: "https://github.com/open-guides/og-aws"
+          }
+        }
       });
     });
-    fs.writeJSONSync("/tmp/out2.json", notes, { spaces: 4 });
     return notes;
   }
 }

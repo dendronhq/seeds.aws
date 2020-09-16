@@ -58,15 +58,15 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@dendronhq/common-all": "^0.10.7-alpha.0",
-    "@dendronhq/common-server": "^0.11.1",
-    "@dendronhq/seeds-core": "^0.0.0",
+    "@dendronhq/seeds-core": "^0.11.3-alpha.5",
     "fs-extra": "^9.0.1",
     "klaw": "^3.0.0",
     "lodash": "^4.17.20",
+    "mdast": "^3.0.0",
     "nodegit": "^0.27.0",
     "remark": "^12.0.1",
     "remark-parse": "^8.0.3",
+    "unified": "^9.2.0",
     "vscode-uri": "^2.1.2"
   }
 }
