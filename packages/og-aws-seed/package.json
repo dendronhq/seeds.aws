@@ -1,5 +1,5 @@
 {
-  "name": "@dendronhq/og-aws-pod",
+  "name": "@dendronhq/og-aws-seed",
   "version": "0.0.0",
   "description": "aws pod",
   "license": "GPLv3",
@@ -60,7 +60,7 @@
   "dependencies": {
     "@dendronhq/common-all": "^0.10.7-alpha.0",
     "@dendronhq/common-server": "^0.11.1",
-    "@dendronhq/pods-core": "^0.11.1",
+    "@dendronhq/seeds-core": "^0.0.0",
     "fs-extra": "^9.0.1",
     "klaw": "^3.0.0",
     "lodash": "^4.17.20",

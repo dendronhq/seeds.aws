@@ -1,7 +1,7 @@
 import { Heading, PhrasingContent } from "mdast";
 import { Processor } from "unified";
 
-const OUTPUT: AWSService[]= [];
+const OUTPUT: AWSService[] = [];
 
 export function getOutput() {
   return OUTPUT;
@@ -40,7 +40,7 @@ export function ogAWSPlugin() {
         };
         OUTPUT.push(service);
       } else {
-        service.entries.push(node)
+        service.entries.push(node);
       }
       if (value.value === "High Availability" && depth === 2) {
         state.foundStart = false;
