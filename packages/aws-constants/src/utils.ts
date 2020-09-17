@@ -26,7 +26,7 @@ const ALIASES = {
   SMS: ServiceNames.AWS_SERVER_MIGRATION_SERVICE,
   SNS: ServiceNames.AMAZON_SIMPLE_NOTIFICATION_SERVICE,
   SQS: ServiceNames.AMAZON_SIMPLE_QUEUE_SERVICE,
-  SSO: ServiceNames.AWS_SINGLE_SIGN_ON
+  SSO: ServiceNames.AWS_SINGLE_SIGN_ON,
 };
 
 // === AWS Utils
@@ -40,7 +40,7 @@ export function awsAliasToFull(alias: string): string {
       snakeCase: false,
       stripPrefix: true,
       slugName: false,
-      expandAlias: false
+      expandAlias: false,
     });
   } else {
     return alias;
@@ -49,7 +49,7 @@ export function awsAliasToFull(alias: string): string {
 
 // TODO: generate chart
 export const AWS_SERVICE_SUFFIX: any = {
-  quicksight: "QuickSight"
+  quicksight: "QuickSight",
 };
 export function awsCapitalizeServiceName(serviceName: string): string {
   const capitalized: string | undefined =
@@ -80,7 +80,7 @@ export const AWS_ONE_OFF_MAP: any = {
   "iot greengrass": "Greengrass",
   iotevents: "IoT Events",
   iot1click: "IoT 1-Click",
-  eventbridge: "Event Bridge"
+  eventbridge: "Event Bridge",
 };
 /** Normalize suffixes */
 export function awsNormalizeOneOffName(name: string): string {
@@ -93,7 +93,7 @@ export function awsNormalizeOneOffName(name: string): string {
 }
 
 export function awsSuffixToFullServiceName(suffix: string): string {
-  return _.mapKeys(ServiceNames, v => {
+  return _.mapKeys(ServiceNames, (v) => {
     return normalizeServiceName(v as string, { stripPrefix: true });
   })[suffix] as string;
 }
@@ -127,7 +127,7 @@ export function normalizeServiceName(
     slugName: false,
     stripParen: true,
     expandAlias: true,
-    capitalizeName: true
+    capitalizeName: true,
   });
   let prefix = "";
   let suffix = name;
@@ -156,7 +156,7 @@ export function normalizeServiceName(
   // destructive
   if (opts.snakeCase) {
     let tmpSuffix = _.snakeCase(suffix).toUpperCase();
-    blacklist.forEach(ent => {
+    blacklist.forEach((ent) => {
       if (tmpSuffix.indexOf(ent) >= 0) {
         tmpSuffix = tmpSuffix.replace(
           new RegExp(ent, "i"),
@@ -177,7 +177,7 @@ export function normalizeServiceName(
     suffix = suffix.replace(new RegExp(sep, "g"), "");
   }
 
-  return _.filter([prefix, suffix], u => !_.isEmpty(u)).join(sep);
+  return _.filter([prefix, suffix], (u) => !_.isEmpty(u)).join(sep);
 }
 
 export function validateAWSServiceName(

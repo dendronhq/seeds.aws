@@ -37,8 +37,8 @@ const lambdaRole = new Role(this, "lambdaDomainChecker", {
   managedPolicies: [
     ManagedPolicy.fromAwsManagedPolicyName(
       ManagedPolicies.AWS_LAMBDA_BASIC_EXECUTION_ROLE
-    )
-  ]
+    ),
+  ],
 });
 ```
 

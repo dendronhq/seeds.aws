@@ -9,7 +9,7 @@
     "type": "git",
     "url": ""
   },
-  "keywords": [ ],
+  "keywords": [],
   "homepage": "",
   "scripts": {
     "clean": "rimraf lib && rimraf coverage",

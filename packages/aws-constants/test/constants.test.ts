@@ -1,7 +1,7 @@
 import {
   FederatedPrincipals,
   ServicePrincipals,
-  ManagedPolicies
+  ManagedPolicies,
 } from "../src";
 
 describe("principles", () => {

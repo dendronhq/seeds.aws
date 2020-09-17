@@ -4,10 +4,10 @@ import * as yargs from "yargs";
 import * as fs from "fs-extra";
 import * as _ from "lodash";
 import * as execa from "execa";
-import * as pino from "pino";
+const pino = require("pino");
 import Axios from "axios";
 import { normalizeServiceName, awsGetPrefix } from "../src/utils";
-const L = pino();
+const L: any = pino();
 const SOURCES = ["managed_policies", "service_names", "service_names_v2"];
 
 function classFromJson({ jsonObj, key }: { jsonObj: any; key: string }) {
@@ -69,7 +69,7 @@ async function updateConstants({ target }: { target: string }) {
       L.info({ ctx: "updateConstants/startConverting", target });
       _.keys(data).forEach((key: string) => {
         let modKey = _.snakeCase(key).toUpperCase();
-        blacklist.forEach(ent => {
+        blacklist.forEach((ent) => {
           if (modKey.indexOf(ent) >= 0) {
             modKey = modKey.replace(ent, ent.replace("_", ""));
           }
@@ -86,7 +86,7 @@ async function updateConstants({ target }: { target: string }) {
       L.info({ ctx: "updateConstants/stopConverting" });
       let payload = classFromJson({
         jsonObj: results,
-        key: "MANAGED_POLICIES"
+        key: "MANAGED_POLICIES",
       });
       fs.writeFileSync("./lib/policies.ts", payload);
       L.info({ ctx: "updateConstants/exit" });
@@ -103,14 +103,14 @@ async function updateConstants({ target }: { target: string }) {
         { name: "Amazon Lumberyard" },
         { name: "AWS Cloud Development Kit" },
         { name: "Application Load Balancer" },
-        { name: "Classic Load Balancer" }
+        { name: "Classic Load Balancer" },
       ];
-      _.each(_.values(data).concat(extra), ent => {
+      _.each(_.values(data).concat(extra), (ent) => {
         let name = ent.name;
         out[
           normalizeServiceName(name, {
             snakeCase: true,
-            expandAlias: true
+            expandAlias: true,
           }).toUpperCase()
         ] = normalizeServiceName(name, { snakeCase: false });
 
@@ -118,7 +118,7 @@ async function updateConstants({ target }: { target: string }) {
           normalizeServiceName(name, {
             snakeCase: true,
             expandAlias: true,
-            stripPrefix: true
+            stripPrefix: true,
           }).toUpperCase()
         ] = normalizeServiceName(name, { snakeCase: false, stripPrefix: true });
 
@@ -126,7 +126,7 @@ async function updateConstants({ target }: { target: string }) {
           normalizeServiceName(name, {
             snakeCase: true,
             expandAlias: true,
-            stripPrefix: true
+            stripPrefix: true,
           }).toUpperCase()
         ] = awsGetPrefix(normalizeServiceName(name, { snakeCase: false }));
       });
@@ -134,18 +134,18 @@ async function updateConstants({ target }: { target: string }) {
       let payload = classFromJson({ jsonObj: out, key: "SERVICE_NAMES" });
       let payload2 = classFromJson({
         jsonObj: out2,
-        key: "SERVICE_NAMES_NO_PREFIX"
+        key: "SERVICE_NAMES_NO_PREFIX",
       });
       let payload3 = classFromJson({
         jsonObj: out3,
-        key: "SERVICE_NAMES_TO_PREFIX"
+        key: "SERVICE_NAMES_TO_PREFIX",
       });
       fs.writeFileSync(
         "./lib/services.ts.swp",
         [payload, payload2, payload3].join("\n")
       );
       fs.moveSync("./lib/services.ts.swp", "./lib/services.ts", {
-        overwrite: true
+        overwrite: true,
       });
       return;
     }
@@ -164,16 +164,16 @@ async function updateConstants({ target }: { target: string }) {
 
 yargs
   .option("stage", {
-    alias: "s"
+    alias: "s",
   })
   .command(
     ["fetch [targets]"],
     "fetch constants data",
-    yargs => {
+    (yargs) => {
       yargs.positional("targets", {
         describe: "what to fetch",
         default: SOURCES.join(","),
-        type: "string"
+        type: "string",
       });
     },
     (argv: any) => {
@@ -197,11 +197,11 @@ yargs
   .command(
     ["update [targets]"],
     "update constants",
-    yargs => {
+    (yargs) => {
       yargs.positional("targets", {
         describe: "constants to update",
         default: SOURCES.join(","),
-        type: "string"
+        type: "string",
       });
     },
     async (argv: any) => {
