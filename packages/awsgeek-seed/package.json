@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@dendronhq/aws-constants": "^3.0.3",
-    "@dendronhq/seeds-core": "^0.11.3-alpha.5",
+    "@dendronhq/seeds-core": "^0.11.4-alpha.0",
     "fs-extra": "^9.0.1",
     "klaw": "^3.0.0",
     "lodash": "^4.17.20",

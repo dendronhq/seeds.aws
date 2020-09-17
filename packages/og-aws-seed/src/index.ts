@@ -15,6 +15,12 @@ export default class OgAWSSeed extends DendronSeed {
         type: "git" as const,
         url: "https://github.com/open-guides/og-aws.git",
       },
+      mergeStrategy: "replace" as const,
+      source: {
+        name: "og-aws",
+        url: "https://github.com/open-guides/og-aws",
+        license: "Creative Commons Attribution-ShareAlike 4.0 International License"
+      }
     };
   }
 
@@ -43,18 +49,13 @@ export default class OgAWSSeed extends DendronSeed {
       const fname = `s.${cleanName}`;
       return new Note({
         id: cleanName,
+        title: nname,
         created: "0",
         updated: "0",
         fname,
         body: content.join("\n"),
-        custom: {
-          source: {
-            name: "og-aws",
-            url: "https://github.com/open-guides/og-aws"
-          }
-        }
       });
     });
-    return notes;
+    return {notes, assets: []};
   }
 }

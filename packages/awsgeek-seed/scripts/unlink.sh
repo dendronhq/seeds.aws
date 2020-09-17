@@ -1,0 +1,1 @@
+lerna add @dendronhq/seeds-core --scope @dendronhq/awsgeek-seed
