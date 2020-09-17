@@ -1,7 +1,7 @@
 {
   "name": "@dendronhq/aws-constants",
   "description": "Library of helpful constants",
-  "version": "3.0.3",
+  "version": "0.0.1",
   "main": "./lib/src/index.js",
   "types": "./lib/src/index.d.ts",
   "license": "Apache-2.0",
@@ -41,14 +41,14 @@
     "yargs": "^13.3.0"
   },
   "devDependencies": {
-    "ts-jest": "^24.3.0",
-    "typescript": "^3.5.3",
     "@types/axios": "^0.14.0",
     "@types/execa": "^2.0.0",
     "@types/fs-extra": "^8.0.0",
     "@types/jest": "^24.0.24",
     "@types/lodash": "^4.14.136",
     "@types/pino": "^5.8.8",
-    "@types/yargs": "^13.0.2"
+    "@types/yargs": "^13.0.2",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.5.3"
   }
 }

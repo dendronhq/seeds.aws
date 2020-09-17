@@ -1,6 +1,6 @@
 {
   "name": "@dendronhq/awsgeek-seed",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "license": "GPLv3",
   "repository": {
@@ -58,7 +58,7 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@dendronhq/aws-constants": "^3.0.3",
+    "@dendronhq/aws-constants": "^0.0.1",
     "@dendronhq/seeds-core": "^0.11.4-alpha.0",
     "fs-extra": "^9.0.1",
     "klaw": "^3.0.0",
