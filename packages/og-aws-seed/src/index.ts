@@ -19,14 +19,15 @@ export default class OgAWSSeed extends DendronSeed {
       source: {
         name: "og-aws",
         url: "https://github.com/open-guides/og-aws",
-        license: "Creative Commons Attribution-ShareAlike 4.0 International License"
-      }
+        license:
+          "Creative Commons Attribution-ShareAlike 4.0 International License",
+      },
     };
   }
 
   async prepare(opts: PrepareOpts) {
     const ctx = "prepare";
-    this.L.info({ctx, opts});
+    this.L.info({ ctx, opts });
     const { root } = opts;
     const fpath = path.join(root, "README.md");
     const dataPath = fs.readFileSync(fpath, { encoding: "utf8" });
@@ -56,6 +57,6 @@ export default class OgAWSSeed extends DendronSeed {
         body: content.join("\n"),
       });
     });
-    return {notes, assets: []};
+    return { notes, assets: [] };
   }
 }

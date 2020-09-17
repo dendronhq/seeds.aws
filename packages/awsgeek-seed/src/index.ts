@@ -69,6 +69,10 @@ export default class AWSGeekSeed extends DendronSeed {
           const pageLink = _.replace(path.basename(ent, ".jpg"), /_en$/, "");
           notes.push(
             new Note({
+              id: cleanName,
+              title: nname,
+              created: "0",
+              updated: "0",
               fname,
               body: [
                 `![](/assets/images/${ent})`,
