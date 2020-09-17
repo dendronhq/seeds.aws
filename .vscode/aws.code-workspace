@@ -4,6 +4,9 @@
 			"path": "../packages/og-aws-seed"
 		},
 		{
+			"path": "../packages/aws-constants"
+		},
+		{
 			"path": "../"
 		}
 	],

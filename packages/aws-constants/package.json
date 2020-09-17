@@ -1,0 +1,54 @@
+{
+  "name": "@dendronhq/aws-constants",
+  "description": "Library of helpful constants",
+  "version": "3.0.3",
+  "main": "./lib/src/index.js",
+  "types": "./lib/src/index.d.ts",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [ ],
+  "homepage": "",
+  "scripts": {
+    "clean": "rimraf lib && rimraf coverage",
+    "format": "prettier --ignore-path='../../.prettierignore' --write .",
+    "lint": "echo stub",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "npm run compile",
+    "compile": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "watch": "npm run compile -- --watch",
+    "test:unit": "jest ",
+    "test:unit:debug": "NODE_ENV=test node --inspect-brk node_modules/.bin/jest --runInBand",
+    "test:watch": "LOG_DST=/tmp/pods-core.txt jest --watch"
+  },
+  "author": {
+    "email": "kevin@thence.io",
+    "name": "Kevin S Lin",
+    "url": "https://github.com/kevinslin"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "execa": "^2.0.3",
+    "fs-extra": "^8.1.0",
+    "jest": "^24.9.0",
+    "lodash": "^4.17.15",
+    "pino": "^5.13.1",
+    "yargs": "^13.3.0"
+  },
+  "devDependencies": {
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.5.3",
+    "@types/axios": "^0.14.0",
+    "@types/execa": "^2.0.0",
+    "@types/fs-extra": "^8.0.0",
+    "@types/jest": "^24.0.24",
+    "@types/lodash": "^4.14.136",
+    "@types/pino": "^5.8.8",
+    "@types/yargs": "^13.0.2"
+  }
+}
