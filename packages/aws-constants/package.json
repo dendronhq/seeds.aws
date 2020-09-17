@@ -1,7 +1,7 @@
 {
   "name": "@dendronhq/aws-constants",
   "description": "Library of helpful constants",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "main": "./lib/src/index.js",
   "types": "./lib/src/index.d.ts",
   "license": "Apache-2.0",
