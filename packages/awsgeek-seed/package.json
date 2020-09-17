@@ -1,7 +1,7 @@
 {
-  "name": "@dendronhq/og-aws-seed",
+  "name": "@dendronhq/awsgeek-seed",
   "version": "0.0.0",
-  "description": "aws pod",
+  "description": "",
   "license": "GPLv3",
   "repository": {
     "type": "git",

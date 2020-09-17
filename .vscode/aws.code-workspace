@@ -4,11 +4,16 @@
 			"path": "../packages/og-aws-seed"
 		},
 		{
+			"path": "../packages/awsgeek-seed"
+		},
+		{
 			"path": "../packages/aws-constants"
 		},
 		{
 			"path": "../"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }
